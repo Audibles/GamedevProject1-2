@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Goomba : Enemy {
 
-    float walkingSpeed = 5;
+    public float walkingSpeed = -5;
     Vector3 currentSpeed;
 
     public override void Start() {
