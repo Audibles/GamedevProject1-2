@@ -172,7 +172,7 @@ public class PlayerController : MonoBehaviour {
 			if (coll.collider.tag == "HitByPlayer") {
 				goom.HitByPlayer (this);
 			} else if (coll.collider.tag == "HitPlayer") {
-				Debug.Log ("Mario got hit");
+				goom.HitPlayer (this);
 			}
                 break;
         }

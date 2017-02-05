@@ -57,11 +57,7 @@ public class Goomba : Enemy {
      PlayerController.Shrink(). */
     public override void HitPlayer(PlayerController player)
     {
-        /*
-         * 
-         * YOUR CODE HERE
-         * 
-         */
+		player.Shrink ();
     }
 
 }
