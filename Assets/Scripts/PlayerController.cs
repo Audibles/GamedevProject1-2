@@ -168,15 +168,23 @@ public class PlayerController : MonoBehaviour {
                 Item item = coll.collider.GetComponent<Item>();
                 item.PickUpItem(this);
                 break;
-		case "Enemy":
-			if (coll.collider.tag == "HitByPlayer") {
-				goom.HitByPlayer (this);
-			} else if (coll.collider.tag == "HitPlayer") {
-				goom.HitPlayer (this);
-			}
-                break;
+			case "Enemy":
+				if (coll.collider.tag == "HitByPlayer") {
+					goom.HitByPlayer (this);
+				} else if (coll.collider.tag == "HitPlayer") {
+					goom.HitPlayer (this);
+				}
+				break;
         }
     }
+
+	public void OnTriggerEnter2D(Collider2D coll) {
+		switch (LayerMask.LayerToName(coll.gameObject.layer)) {
+			case "Pit":
+				SceneManager.LoadScene("Main Scene"); //death
+				break;
+		}
+	}
 
     private class Grounded : PlayerState
     {
