@@ -1429,15 +1429,15 @@ Prefab:
       objectReference: {fileID: 9100000, guid: c06594c5a090cf34496449b3fc17f8c6, type: 2}
     - target: {fileID: 4510235390730550, guid: 852ff4a4d2f2fd14b99a2b01baf8df3b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4303264830716360, guid: 852ff4a4d2f2fd14b99a2b01baf8df3b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4804940937679412, guid: 852ff4a4d2f2fd14b99a2b01baf8df3b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114788858208942716, guid: 852ff4a4d2f2fd14b99a2b01baf8df3b,
         type: 2}

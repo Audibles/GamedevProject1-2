@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+		
         rb = this.transform.root.gameObject.GetComponent<Rigidbody2D>();
         rb.freezeRotation = true;
         anim = this.gameObject.GetComponent<Animator>();
@@ -160,18 +161,19 @@ public class PlayerController : MonoBehaviour {
     public void OnCollisionEnter2D(Collision2D coll) {
         //A layer is stored as an int. This function gets the 
         //layer name so that we can check it against strings.
+		Goomba goom = (Goomba) coll.gameObject.GetComponent(typeof(Goomba));
         switch (LayerMask.LayerToName(coll.gameObject.layer))
         {
             case "Item":
                 Item item = coll.collider.GetComponent<Item>();
                 item.PickUpItem(this);
                 break;
-            case "Enemy":
-                /*
-                 * 
-                 * YOUR CODE HERE
-                 * 
-                 */
+		case "Enemy":
+			if (coll.collider.tag == "HitByPlayer") {
+				goom.HitByPlayer (this);
+			} else if (coll.collider.tag == "HitPlayer") {
+				Debug.Log ("Mario got hit");
+			}
                 break;
         }
     }

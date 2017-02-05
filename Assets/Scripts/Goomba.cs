@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class Goomba : Enemy {
 
-    public float walkingSpeed = -5;
+    public float walkingSpeed;
     Vector3 currentSpeed;
+	Animator anim;
 
     public override void Start() {
+		anim = GetComponent<Animator> ();
+		anim.SetBool ("Dead", false);
         base.Start();
         currentSpeed = new Vector3(walkingSpeed, 0);
         rb.velocity = currentSpeed;
@@ -16,6 +19,7 @@ public class Goomba : Enemy {
 
 	// Update is called once per frame
 	public override void FixedUpdate () {
+		
         if (dead)
         {
             if (timeToDeath <= 0)
@@ -43,11 +47,9 @@ public class Goomba : Enemy {
      * and becoming kinematic, and destroying its colliders. */
     public override void HitByPlayer(PlayerController player)
     {
-        /*
-         * 
-         * YOUR CODE HERE
-         * 
-         */ 
+		anim.SetBool ("Dead", true);
+		dead = true;
+		walkingSpeed = 0;
         rb.isKinematic = true;
     }
 
