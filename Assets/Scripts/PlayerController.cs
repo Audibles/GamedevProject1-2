@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour {
     GameObject superMario;
     bool super;
     bool little;
+	float slowTimer = 2f;
+	public bool slowed = false;
 
     //Awake is called before any Start function
     void Awake() {
@@ -55,6 +57,13 @@ public class PlayerController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+		if (slowed) {
+			Slow ();
+		}
+		if (slowTimer <= 0) {
+			slowTimer = 2f;
+			slowed = false;
+		}
         moveX = Input.GetAxis("Horizontal");
         moveJump = Input.GetAxis("Jump");
         myState.Update();
@@ -151,6 +160,11 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
+	public void Slow() {
+		rb.velocity = Vector3.zero;
+		slowTimer -= Time.deltaTime;
+	}
+
     /* Anything that can collide with Mario and effect him is 
      * detected in this function. It checks the layer, gets the 
      * script that contains all object functions, and then
@@ -163,8 +177,9 @@ public class PlayerController : MonoBehaviour {
         //layer name so that we can check it against strings.
         switch (LayerMask.LayerToName(coll.gameObject.layer))
         {
-            case "Item":
-                Item item = coll.collider.GetComponent<Item>();
+			case "Item":
+				Item item = coll.collider.GetComponent<Item> ();
+				Debug.Log (item);
                 item.PickUpItem(this);
                 break;
 			case "Enemy":
