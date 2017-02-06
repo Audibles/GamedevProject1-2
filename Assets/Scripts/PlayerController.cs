@@ -161,7 +161,6 @@ public class PlayerController : MonoBehaviour {
     public void OnCollisionEnter2D(Collision2D coll) {
         //A layer is stored as an int. This function gets the 
         //layer name so that we can check it against strings.
-		Goomba goom = (Goomba) coll.gameObject.GetComponent(typeof(Goomba));
         switch (LayerMask.LayerToName(coll.gameObject.layer))
         {
             case "Item":
@@ -169,10 +168,21 @@ public class PlayerController : MonoBehaviour {
                 item.PickUpItem(this);
                 break;
 			case "Enemy":
-				if (coll.collider.tag == "HitByPlayer") {
-					goom.HitByPlayer (this);
-				} else if (coll.collider.tag == "HitPlayer") {
-					goom.HitPlayer (this);
+				if (coll.gameObject.tag == "Goomba") { 
+					Goomba enemyName = (Goomba)coll.gameObject.GetComponent (typeof(Goomba));
+					if (coll.collider.tag == "HitByPlayer") {
+						enemyName.HitByPlayer (this);
+					} else if (coll.collider.tag == "HitPlayer") {
+						enemyName.HitPlayer (this);
+					}
+				}
+				if (coll.gameObject.tag == "FlyerPerson") {
+					FlyerPerson enemyName = (FlyerPerson) coll.gameObject.GetComponent(typeof(FlyerPerson));
+					if (coll.collider.tag == "HitByPlayer") {
+						enemyName.HitByPlayer (this);
+					} else if (coll.collider.tag == "HitPlayer") {
+						enemyName.HitPlayer (this);
+					}
 				}
 				break;
         }

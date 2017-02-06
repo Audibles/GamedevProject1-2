@@ -11,6 +11,8 @@ TagManager:
   - Block_Bottom
   - HitByPlayer
   - HitPlayer
+  - Goomba
+  - FlyerPerson
   layers:
   - Default
   - TransparentFX
