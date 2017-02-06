@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     GameObject player;
-	float initialx = 12.6f;
+	public float initialx = 12.7f;
 	float y = 5.75f;
 	float z = -10f;
 	// Use this for initialization

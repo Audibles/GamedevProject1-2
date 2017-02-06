@@ -7,11 +7,11 @@ public class FlyerPerson : Enemy {
 
 	public float walkingSpeed;
 	Vector3 currentSpeed;
-	//Animator anim;
+	Animator anim;
 
 	public override void Start() {
-		//anim = GetComponent<Animator> ();
-		//anim.SetBool ("Dead", false);
+		anim = GetComponent<Animator> ();
+		anim.SetBool ("Dead", false);
 		base.Start();
 		currentSpeed = new Vector3(walkingSpeed, 0);
 		rb.velocity = currentSpeed;
@@ -33,6 +33,7 @@ public class FlyerPerson : Enemy {
 			if (rb.velocity.magnitude <= 0.1f)
 			{
 				currentSpeed.x *= -1;
+				transform.localScale = Vector3.Scale(transform.localScale, new Vector3(-1f, 1f, 1f));
 				rb.velocity = currentSpeed;
 			}
 			else
@@ -47,7 +48,7 @@ public class FlyerPerson : Enemy {
      * and becoming kinematic, and destroying its colliders. */
 	public override void HitByPlayer(PlayerController player)
 	{
-		//anim.SetBool ("Dead", true);
+		anim.SetBool ("Dead", true);
 		dead = true;
 		walkingSpeed = 0;
 		rb.isKinematic = true;
