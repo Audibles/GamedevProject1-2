@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour {
             littleMario.SetActive(false);
         } else {
             /* Do nothing for now. We will add this functionality in
-             * Project 1-3. */ 
+             * Project 1-3 */ 
         }
     }
 
